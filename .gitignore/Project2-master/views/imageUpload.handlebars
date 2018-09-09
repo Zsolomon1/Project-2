@@ -1,0 +1,74 @@
+<style>
+
+        header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 30px 10px 10px 10px;
+}
+
+#warning{
+    color: red; 
+    text-align: center;
+    display: none;
+    font-size: 18 px;
+}
+
+
+    .upload {
+        display:flex;
+        justify-content: center;
+    }
+
+    .imageuploadForm{
+        margin-top: 75px;
+        text-align: center;
+        font-size: 40px;
+        color: rgb(72, 72, 72) !important;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+        line-height: 40px;
+        text-align: center;
+        font-weight: bolder;
+        padding: 30px;
+}
+.form{
+    padding: 40px;
+    width:80%;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-control {
+    border: 2px solid rgb(72, 72, 72);
+}
+
+@media screen and (min-width:850px) {
+       .form {
+           width:40%;
+       } 
+
+    }
+
+</style>
+
+<header>
+    <a href="/"><img height="100" widht="100" src="https://preview.ibb.co/gjeVs9/homebtn.png" alt="homebtn" border="0"></a>
+</header>
+
+<div class="imageuploadForm">
+    <p>First, upload an image of the dish you're looking to sell.</p>
+</div>
+<div class="upload">
+    <form  class="form-control form" method="post" enctype="multipart/form-data" action="/imageUpload">
+        <p>
+            <input type="file"  id="upl" name="upl" required/>
+        </p>
+
+        <p>
+            <input class="button btn-site" type="submit"/>
+        </p>
+        
+    </form>
+    
+</div>
+    

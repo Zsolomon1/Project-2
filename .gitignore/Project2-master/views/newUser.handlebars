@@ -1,0 +1,144 @@
+<style>
+    #warningAllFieldsRequiredUser{
+        display: none;
+    }
+    h2{
+        font-size: 27px;
+    }
+    div {
+        display:flex;
+        justify-content: center;
+    }
+
+    div p {
+        padding:20px 5px;
+        color:red;
+        font-weight:600;
+    }
+
+    .button-ctn {
+        display: flex;
+        justify-content: center;
+        margin:15px 5px;
+    }
+
+    input {
+        height:40px;
+        padding:0 5px;
+        border-radius: 5px;
+    }
+
+    .signUp {
+        width:50%;
+        margin-top: -60px;
+    }
+
+    .form-ctn {
+        margin:5px 5px;
+        display:flex;
+        flex-direction: column;
+    }
+
+   
+
+</style>
+
+<header>
+    <a href="/"><img height="100" widht="100" src="https://preview.ibb.co/gjeVs9/homebtn.png" alt="homebtn" border="0"></a>
+</header>
+<div class="container-fluid">
+
+    <form class="signUp">
+        {{!-- action="POST" --}}
+        <h2>New User Sign Up</h2>
+        <hr>
+
+        <div class="form-ctn">
+            <lable>Username / Email</lable>
+            <input type="email" id="username" placeholder="username" name="username" required>
+        </div>
+
+        <div class="form-ctn">
+            <lable>Password</lable>
+            <input type="password" id="password" placeholder="password" name="password">
+        </div>
+
+        <div class="form-ctn">
+            <lable>Confirm Password</lable>
+            <input type="password" id="confirm_password" placeholder="password" name="confirm_passwoord">
+        </div>
+
+
+        <div class="form-ctn">
+            <lable>First Name</lable>
+            <input type="text" placeholder="first name" id="first_name">
+        </div>
+
+        <div class="form-ctn">
+            <lable>Last Name</lable>
+            <input type="text" placeholder="last name" id="last_name">
+        </div>
+
+        <div class="form-ctn">
+            <lable>Address</lable>
+            <input type="text" placeholder="street address" id="address">
+        </div>
+        <div class="form-ctn">
+            <lable>City</lable>
+            <input type="text" placeholder="city" id="city">
+        </div>
+   
+       
+        <div id="warningAllFieldsRequiredUser">
+            <p>* All fields are mandatory</p>
+        </div>
+        <div class="button-ctn">
+            <button type="submit" id="createNewUser" class="button btn-site">Create New User</button>
+        </div>
+
+        
+    </form>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    //no logic to confirm user password
+    function captureNewUser(event) {
+        event.preventDefault()
+
+        var username = $("#username").val().trim();
+        var password =  $("#password").val().trim();
+        var confirm_passwoord = $("#confirm_password").val().trim();
+        var first_name = $("#first_name").val().trim();
+        var last_name = $("#last_name").val().trim();
+        var address = $("#address").val().trim();
+        var city = $("#city").val().trim();
+
+       
+        if(username == "" ||
+            password ==  "" ||
+            first_name == "" ||
+            last_name == "" ||
+            address == "" ||
+            city == "") {
+            $("#warningAllFieldsRequiredUser").show()
+        } else {
+            var newUser = {
+                username: username,
+                password: password,
+                first_name: first_name,
+                last_name: last_name,
+                address: address,
+                city: city
+               }
+                
+               $.post('/newUser', newUser).then(function(data) {
+                window.location.href = '/userOptions';
+            }).catch(console.error);
+        }
+    };
+
+    $("form").on("submit", captureNewUser);
+
+</script>
