@@ -6,8 +6,6 @@ PROPOSAL
 
 Project Title: Food Post (working)
 
-Team Members: James, Lauren, Yadhap, Jake
-
 Project Description:
 Food service application that connects users searching for food with users who are offering food items for sale.
 
